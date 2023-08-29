@@ -34,44 +34,43 @@ public class Cajero {
     private JTextField TCANTIDAD4;
     private JTextField TCANTIDAD5;
     private JButton FACTURAButton;
+    int contador = 0;
     //cliente
-    String Nom,Apel,Mail;
-    int Ced,Telef;
+    String Nom,Apel,Mail,Ced,Telef;
     //productos
-    String Nomprod;
-    int Codprod, PrecioU,Cantidad;
+    int CodigosP [] = {0,0,0,0,0};
+    String NombresP[] = {"","","","",""};
+    Double PreciosP[] = {0.0,0.0,0.0,0.0,0.0};
+    int CantidadesP[] = {0,0,0,0,0};
+    Double Subtotales[] = {0.0,0.0,0.0,0.0,0.0};
     //Total
-    int Subtotal,Valoriva,Total;
+    double Subtotal, Valoriva= 0.12 ,Total;
+    //Conexion
     static String DB_URL="jdbc:mysql://localhost/PruebaAlan";
     static String USER="root";
     static String PASS="root_bas3";
 
-    public int CODIGOPRODUCTO(int Cod){
-        String SELECT_QUERY="SELECT * FROM Producto WHERE Cod = ?";
-        try(Connection conn=DriverManager.getConnection(DB_URL,USER,PASS);)
-        {
-            PreparedStatement statement = conn.prepareStatement(SELECT_QUERY);
-            statement.setString(1, SIGNO1);
-            ResultSet rs = statement.executeQuery();
-            while (rs.next()) {
-                Codigo = Integer.parseInt(rs.getString("CODIGO"));
-                Cedula = rs.getString("CEDULA");
-                Nombre = rs.getString("NOMBRE");
-                Fecha = rs.getString("FECHA_NACIMIENTO");
+    public void CODIGOPRODUCTO(String Codigo){
+        for (int i = 0; contador <= 4 ; i++){
+            String SELECT_QUERY="SELECT * FROM Producto WHERE Cod = ?";
+            try(Connection conn=DriverManager.getConnection(DB_URL,USER,PASS);)
+            {
+                PreparedStatement statement = conn.prepareStatement(SELECT_QUERY);
+                statement.setString(1, Codigo);
+                ResultSet rs = statement.executeQuery();
+                while (rs.next()) {
+                    NombresP[i] = rs.getString("Nom");
+                    PreciosP[i] = Double.valueOf(rs.getString("Precio"));
+                    CantidadesP[i] = Integer.parseInt(rs.getString("Stock"));
+                }
             }
-            TCODIGO.setText(String.valueOf(Codigo));
-            TCEDULA.setText(Cedula);
-            TNOMBRE.setText(Nombre);
-            TFECHA.setText(Fecha);
+            catch (SQLException eX){
+                throw new RuntimeException(eX);
+            }
         }
-        catch (SQLException eX){
-            throw new RuntimeException(eX);
-        }
-    return 0;
     }
 
     public Cajero(){
-
         FACTURAButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -79,10 +78,21 @@ public class Cajero {
                 Nom = TNOMBRE.getText();
                 Apel = TAPELLIDO.getText();
                 Mail = TCORREO.getText();
-                Ced = Integer.parseInt(TCEDULA.getText());
-                Telef = Integer.parseInt(TTELEF.getText());
+                Ced = TCEDULA.getText();
+                Telef = TTELEF.getText();
                 //Productos
-
+                CodigosP[0] = Integer.parseInt(TCOD1.getText());
+                CodigosP[1] = Integer.parseInt(TCOD2.getText());
+                CodigosP[2] = Integer.parseInt(TCOD2.getText());
+                CodigosP[3] = Integer.parseInt(TCOD3.getText());
+                CodigosP[4] = Integer.parseInt(TCOD4.getText());
+                //Calculos
+                for (int i = 0; i <=0; i++){
+                    Subtotales[i]=PreciosP[i]*CantidadesP[i];
+                    Subtotal += Subtotales[i];
+                }
+                Total=Subtotal+(Subtotal*Valoriva);
+                TTOTAL.setText(String.valueOf(Total));
             }
         });
     }
