@@ -75,12 +75,20 @@ public class principal {
         btn_ingresar.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                JFrame frame = new JFrame("Menu Principal");
+                frame.setContentPane(new Cajero().CajeroP);
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                //colocar funcion
+
+                frame.pack();
+                frame.setLocationRelativeTo(null);
+                frame.setVisible(true);
                 if (Combo_CA.getSelectedItem().equals("Cajero")) {
                     Cajero log_caj = new Cajero();
                     log_caj.setVisible(true);
                 }
-                if (Combo_CA.getSelectedItem().equals("Pantalla")) {
-                    Pantalla log_admin = new Pantalla();
+                if (Combo_CA.getSelectedItem().equals("Cajero")) {
+                    Cajero log_admin = new Cajero();
                     log_admin.setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(null, "No se puede acceder al sistema");
