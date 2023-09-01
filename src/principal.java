@@ -13,10 +13,10 @@ public class principal {
     private JPanel jPanel;
     private JComboBox Combo_CA;
     private JTextField btn_usuario;
-    private JPasswordField btn_contraseña;
+    private JPasswordField btn_contrasenia;
     private JButton btn_ingresar;
     String usuarioo;
-    String contraseñaa;
+    String contraseniaa;
     static final String DB_URL = "jdbc:mysql://localhost/PROYECTO2023A";
     static final String USER = "root";
     static final String PASS = "root_bas3";
@@ -49,10 +49,10 @@ public class principal {
             }
         });*/
 
-        btn_contraseña.addActionListener(new ActionListener() {
+        btn_contrasenia.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                contraseñaa= btn_contraseña.getText();
+                contraseniaa= btn_contrasenia.getText();
             }
         });
         btn_ingresar.addActionListener(new ActionListener() {
@@ -75,11 +75,11 @@ public class principal {
             @Override
             public void mouseClicked(MouseEvent e) {
                  if (Combo_CA.getSelectedItem().equals("Cajero")){
-                    Pantalla log_caj = new Pantalla();
+                    Cajero log_caj = new Cajero();
                     log_caj.setVisible(true);
                 }
-                if(Combo_CA.getSelectedItem().equals("Administrador")){
-                    loginAdmin log_admin = new loginAdmin();
+                if(Combo_CA.getSelectedItem().equals("Pantalla")){
+                    Pantalla log_admin = new Pantalla();
                     log_admin.setVisible(true);
                 }
                 else{

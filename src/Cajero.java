@@ -96,11 +96,7 @@ public class Cajero {
             }
         });
     }
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Cajero");
-        frame.setContentPane(new Cajero().CajeroP);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
+
+    public void setVisible(boolean b) {
     }
 }
