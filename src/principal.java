@@ -20,11 +20,12 @@ public class principal {
     static final String DB_URL = "jdbc:mysql://localhost/PROYECTO2023A";
     static final String USER = "root";
     static final String PASS = "root_bas3";
+
     public principal() {
         btn_usuario.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                usuarioo= btn_usuario.getText();
+                usuarioo = btn_usuario.getText();
             }
         });
 
@@ -52,7 +53,7 @@ public class principal {
         btn_contrasenia.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                contraseniaa= btn_contrasenia.getText();
+                contraseniaa = btn_contrasenia.getText();
             }
         });
         btn_ingresar.addActionListener(new ActionListener() {
@@ -74,20 +75,20 @@ public class principal {
         btn_ingresar.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                 if (Combo_CA.getSelectedItem().equals("Cajero")){
+                if (Combo_CA.getSelectedItem().equals("Cajero")) {
                     Cajero log_caj = new Cajero();
                     log_caj.setVisible(true);
                 }
-                if(Combo_CA.getSelectedItem().equals("Pantalla")){
+                if (Combo_CA.getSelectedItem().equals("Pantalla")) {
                     Pantalla log_admin = new Pantalla();
                     log_admin.setVisible(true);
-                }
-                else{
+                } else {
                     JOptionPane.showMessageDialog(null, "No se puede acceder al sistema");
                 }
             }
         });
     }
+
     public static void main(String[] args) {
 
         JFrame frame = new JFrame("Menu Principal");
