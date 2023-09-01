@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class principal {
 
-    private JPanel jPanel;
+    JPanel jPanel;
     private JComboBox Combo_CA;
     private JTextField btn_usuario;
     private JPasswordField btn_contrasenia;
@@ -78,8 +78,7 @@ public class principal {
                 JFrame frame = new JFrame("Menu Principal");
                 frame.setContentPane(new Cajero().CajeroP);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                //colocar funcion
-
+                closeLoginFrame();
                 frame.pack();
                 frame.setLocationRelativeTo(null);
                 frame.setVisible(true);
@@ -96,7 +95,10 @@ public class principal {
             }
         });
     }
-
+//creamoas la funcion para cerrar otras ventanas y abrir la siguiente
+    private void closeLoginFrame() {
+        JFrame loginFrame = (JFrame) SwingUtilities.getWindowAncestor(jPanel);
+        loginFrame.dispose();}
     public static void main(String[] args) {
 
         JFrame frame = new JFrame("Menu Principal");
