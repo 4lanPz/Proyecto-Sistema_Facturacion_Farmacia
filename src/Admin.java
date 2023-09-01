@@ -1,14 +1,10 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
-import static java.sql.DriverManager.getConnection;
 
-public class Pantalla {
+public class Admin {
     private JButton agrgarC;
     private JButton revisionF;
     private JTextField codCajero;
@@ -22,10 +18,11 @@ public class Pantalla {
     private JButton agrgarS;
     private JTextField codcajeroF;
     private JTextField ventaF;
-    private JPanel pantalla;
+    private JPanel admini;
     private JTextField codigoS;
+    private JSeparator s;
 
-    public Pantalla() {
+    public Admin() {
         agrgarC.addActionListener(new ActionListener() {
             static final String DB_URL = "jdbc:mysql://localhost/PROYECTO2023A";
             //cadena de conexion
@@ -43,7 +40,7 @@ public class Pantalla {
                 String contrasenia = passCajero.getText();
 
                 try(Connection conn = DriverManager.getConnection(DB_URL,user, pass)){
-                    String sql = "INSERT INTO Cajero (ID, Nombre, Apellido, Correo, Contrasenia, ) VALUES (?, ?, ?, ?, ?)";
+                    String sql = "INSERT INTO Cajero (ID, Nombre, Apellido, Correo, Contrasenia) VALUES (?, ?, ?, ?, ?)";
                     PreparedStatement pstmt = conn.prepareStatement(sql);
                     pstmt.setString(1, String.valueOf(codigoc)); // Obtener valor desde JTextField
                     pstmt.setString(2, nombre); // Obtener valor desde JTextField
@@ -79,39 +76,54 @@ public class Pantalla {
                 double price = Double.parseDouble(preStock.getText());
                 String prod = prodStock.getText();
 
-
-                try(Connection conn = DriverManager.getConnection(DB_URL,user, pass)){
-                    String sql = "INSERT INTO Producto  (Cod, Nom,Precio,Stock ) VALUES (?, ?, ?,?)";
+                try (Connection conn = DriverManager.getConnection(DB_URL, user, pass)) {
+                    String sql = "INSERT INTO Producto (Cod, Nom, Precio, Stock) VALUES (?, ?, ?, ?)";
                     PreparedStatement pstmt = conn.prepareStatement(sql);
-                    pstmt.setString(1, String.valueOf(coS)); // Obtener valor desde JTextField
-                    pstmt.setString(2, String.valueOf(cantidadS)); // Obtener valor desde JTextField
-                    pstmt.setString(3, String.valueOf(price)); // Obtener valor desde JTextField
-                    pstmt.setString(4, prod); // Obtener valor desde JTextField
-
+                    pstmt.setInt(1, coS);
+                    pstmt.setString(2, prod);
+                    pstmt.setDouble(3, price);
+                    pstmt.setInt(4, cantidadS);
 
                     int filasAfectadas = pstmt.executeUpdate();
                     System.out.println("Se han insertado " + filasAfectadas + " filas.");
                     pstmt.close();
-
-
-                } catch (SQLException e1){
+                } catch (SQLException e1) {
                     e1.printStackTrace();
-
-                };
+                }
 
             }
         });
+
         revisionF.addActionListener(new ActionListener() {
-            static final String DB_URL = "jdbc:mysql://localhost/POO1";
+            static final String DB_URL = "jdbc:mysql://localhost/PROYECTO2023A";
             //cadena de conexion
             static final String user = "root";
             //usuario
             static final String pass= "root_bas3";
             //paswword
-            static final String query = "SELECT * FROM  Factura ";
+            static final String query = "SELECT * FROM Factura  ";
             @Override
             public void actionPerformed(ActionEvent e) {
-                int codigoc = Integer.parseInt(codCajero.getText());
+                int codC = Integer.parseInt(codcajeroF.getText());
+
+
+                try (Connection conn = DriverManager.getConnection(DB_URL, user, pass)) {
+                    String sql = "SELECT COUNT(Numfac) FROM Factura  where IDCaj = ?";
+                    PreparedStatement pstmt = conn.prepareStatement(sql);
+                    pstmt.setInt(1, codC);
+
+                    ResultSet resultSet = pstmt.executeQuery();
+                    if (resultSet.next()) {
+                        int numFacturas = ((ResultSet) resultSet).getInt(1);
+                        ventaF.setText(String.valueOf(numFacturas));
+                    }
+
+                    resultSet.close();
+                    pstmt.close();
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+
 
             }
         });
@@ -119,7 +131,7 @@ public class Pantalla {
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Pantalla");
-        frame.setContentPane(new Pantalla().pantalla);
+        frame.setContentPane(new Admin().admini);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);

@@ -3,10 +3,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 
 public class principal {
 
@@ -71,22 +67,7 @@ public class principal {
                 }*/
             }
         });
-        btn_ingresar.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                 if (Combo_CA.getSelectedItem().equals("Cajero")){
-                    Pantalla log_caj = new Pantalla();
-                    log_caj.setVisible(true);
-                }
-                if(Combo_CA.getSelectedItem().equals("Administrador")){
-                    loginAdmin log_admin = new loginAdmin();
-                    log_admin.setVisible(true);
-                }
-                else{
-                    JOptionPane.showMessageDialog(null, "No se puede acceder al sistema");
-                }
-            }
-        });
+
     }
     public static void main(String[] args) {
 
