@@ -46,14 +46,20 @@ public class Cajero {
     //Total
     double Subtotal, Valoriva= 0.12 ,Total;
     //Conexion
-    static String DB_URL="jdbc:mysql://localhost/PruebaAlan";
-    static String USER="root";
-    static String PASS="root_bas3";
+    //static String DB_URL="jdbc:mysql://localhost/PruebaAlan";
+    //static String USER="root";
+    //static String PASS="root_bas3";
+    String conexion = "jdbc:sqlserver://localhost:1433;" +
+            "database=CorrecionP2B;" +
+            "user=root;" +
+            "password=root_1;" +
+            "trustServerCertificate=true;";
 
     public void CODIGOPRODUCTO(String Codigo){
         for (int i = 0; contador <= 4 ; i++){
             String SELECT_QUERY="SELECT * FROM Producto WHERE Cod = ?";
-            try(Connection conn=DriverManager.getConnection(DB_URL,USER,PASS);)
+            //try(Connection conn=DriverManager.getConnection(DB_URL,USER,PASS);)
+            try(Connection conn=DriverManager.getConnection(conexion);)
             {
                 PreparedStatement statement = conn.prepareStatement(SELECT_QUERY);
                 statement.setString(1, Codigo);

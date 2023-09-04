@@ -1,5 +1,4 @@
 import javax.swing.*;
-<<<<<<<<< Temporary merge branch 1
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -118,26 +117,13 @@ public class Pantalla {
         });
     }
 
+
     public static void main(String[] args) {
         JFrame frame = new JFrame("Pantalla");
         frame.setContentPane(new Pantalla().pantalla);
-=========
 
-public class Pantalla {
-    private JComboBox CBLogin;
-    private JPanel Pantalla;
-    private JLabel imageLabel;
-
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Pantalla");
-        frame.setContentPane(new Pantalla().Pantalla);
->>>>>>>>> Temporary merge branch 2
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
     }
-<<<<<<<<< Temporary merge branch 1
-
-=========
->>>>>>>>> Temporary merge branch 2
 }
