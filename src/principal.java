@@ -6,21 +6,22 @@ import java.awt.event.MouseEvent;
 
 public class principal {
 
-    private JPanel jPanel;
+    JPanel jPanel;
     private JComboBox Combo_CA;
     private JTextField btn_usuario;
-    private JPasswordField btn_contraseña;
+    private JPasswordField btn_contrasenia;
     private JButton btn_ingresar;
     String usuarioo;
-    String contraseñaa;
+    String contraseniaa;
     static final String DB_URL = "jdbc:mysql://localhost/PROYECTO2023A";
     static final String USER = "root";
     static final String PASS = "root_bas3";
+
     public principal() {
         btn_usuario.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                usuarioo= btn_usuario.getText();
+                usuarioo = btn_usuario.getText();
             }
         });
 
@@ -45,10 +46,10 @@ public class principal {
             }
         });*/
 
-        btn_contraseña.addActionListener(new ActionListener() {
+        btn_contrasenia.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                contraseñaa= btn_contraseña.getText();
+                contraseniaa = btn_contrasenia.getText();
             }
         });
         btn_ingresar.addActionListener(new ActionListener() {
@@ -67,8 +68,34 @@ public class principal {
                 }*/
             }
         });
+        btn_ingresar.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                JFrame frame = new JFrame("Menu Principal");
+                frame.setContentPane(new Cajero().CajeroP);
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                closeLoginFrame();
+                frame.pack();
+                frame.setLocationRelativeTo(null);
+                frame.setVisible(true);
+                if (Combo_CA.getSelectedItem().equals("Cajero")) {
+                    Cajero log_caj = new Cajero();
+                    log_caj.setVisible(true);
+                }
+                if (Combo_CA.getSelectedItem().equals("Cajero")) {
+                    Cajero log_admin = new Cajero();
+                    log_admin.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se puede acceder al sistema");
+                }
+            }
+        });
 
     }
+//creamoas la funcion para cerrar otras ventanas y abrir la siguiente
+    private void closeLoginFrame() {
+        JFrame loginFrame = (JFrame) SwingUtilities.getWindowAncestor(jPanel);
+        loginFrame.dispose();}
     public static void main(String[] args) {
 
         JFrame frame = new JFrame("Menu Principal");
