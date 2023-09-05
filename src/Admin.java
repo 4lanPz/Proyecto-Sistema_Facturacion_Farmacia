@@ -18,7 +18,7 @@ public class Admin {
     private JButton agrgarS;
     private JTextField codcajeroF;
     private JTextField ventaF;
-    private JPanel admini;
+    public JPanel admini;
     private JTextField codigoS;
     private JSeparator s;
 
@@ -128,9 +128,11 @@ public class Admin {
             }
         });
     }
+    public void setVisible(boolean b) {
 
+    }
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Pantalla");
+        JFrame frame = new JFrame("Administrador");
         frame.setContentPane(new Admin().admini);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
