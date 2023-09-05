@@ -52,6 +52,7 @@ public class principal {
                            frame.setLocationRelativeTo(null);
                            frame.setVisible(true);
 
+                           
                    } else{
                         JOptionPane.showMessageDialog(null, "Usuario y/o Contraseña Incorrecto");
                    }
