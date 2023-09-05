@@ -40,7 +40,7 @@ public class Admin {
                 String contrasenia = passCajero.getText();
 
                 try(Connection conn = DriverManager.getConnection(DB_URL,user, pass)){
-                    String sql = "INSERT INTO Cajero (ID, Nombre, Apellido, Correo, Contrasenia) VALUES (?, ?, ?, ?, ?)";
+                    String sql = "INSERT INTO Cajero (IDcaj, Nombrecaj, Apellidocaj, Correocaj, Contraseniacaj) VALUES (?, ?, ?, ?, ?)";
                     PreparedStatement pstmt = conn.prepareStatement(sql);
                     pstmt.setString(1, String.valueOf(codigoc)); // Obtener valor desde JTextField
                     pstmt.setString(2, nombre); // Obtener valor desde JTextField
@@ -52,6 +52,12 @@ public class Admin {
                     int filasAfectadas = pstmt.executeUpdate();
                     System.out.println("Se han insertado " + filasAfectadas + " filas.");
                     pstmt.close();
+
+                    codCajero.setText("");
+                    nomCajero.setText("");
+                    apellCajero.setText("");
+                    correoCajero.setText("");
+                    passCajero.setText("");
 
 
                 } catch (SQLException e1){
@@ -87,6 +93,12 @@ public class Admin {
                     int filasAfectadas = pstmt.executeUpdate();
                     System.out.println("Se han insertado " + filasAfectadas + " filas.");
                     pstmt.close();
+
+                    codigoS.setText("");
+                    cantStock.setText("");
+                    preStock.setText("");
+                    prodStock.setText("");
+
                 } catch (SQLException e1) {
                     e1.printStackTrace();
                 }
@@ -120,9 +132,11 @@ public class Admin {
 
                     resultSet.close();
                     pstmt.close();
+
                 } catch (SQLException e1) {
                     e1.printStackTrace();
                 }
+
 
 
             }
