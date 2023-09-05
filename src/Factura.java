@@ -8,6 +8,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.*;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.sql.*;
 
 public class Factura {
     private JPanel PFactura;
@@ -37,7 +38,26 @@ public class Factura {
     private JLabel TOT55;
     private JLabel SUBTOTAL;
     private JLabel IVA;
-
+    static String DB_URL="jdbc:mysql://localhost/PruebaAlan";
+    static String USER="root";
+    static String PASS="root_bas3";
+    public Factura(){
+        /*String SELECT_QUERY="SELECT * FROM FACTURA,  WHERE NUMFAC = ? AND CEDULACLI = ";
+        try(Connection conn= DriverManager.getConnection(DB_URL,USER,PASS);)
+        {
+            PreparedStatement statement = conn.prepareStatement(SELECT_QUERY);
+            statement.setString(1, Codigo);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                NombresP[i] = rs.getString("Nom");
+                PreciosP[i] = Double.valueOf(rs.getString("Precio"));
+                CantidadesP[i] = Integer.parseInt(rs.getString("Stock"));
+            }
+        }
+        catch (SQLException eX){
+            throw new RuntimeException(eX);
+        }*/
+    }
     public static void main(String[] args) {
         JFrame frame = new JFrame("Factura");
         frame.setContentPane(new Factura().PFactura);
