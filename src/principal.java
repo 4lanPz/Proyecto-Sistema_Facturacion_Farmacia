@@ -3,6 +3,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.sql.SQLException;
 
 public class principal {
 
@@ -26,8 +28,6 @@ public class principal {
             }
         });
 
-
-
         btn_contrasenia.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -41,13 +41,21 @@ public class principal {
 
                 System.out.print(Combo_CA.getSelectedItem());
                 if(Combo_CA.getSelectedItem().equals("Cajero")){
-                    JFrame frame = new JFrame("Menu Principal");
-                    frame.setContentPane(new Cajero().CajeroP);
-                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                    closeLoginFrame();
-                    frame.pack();
-                    frame.setLocationRelativeTo(null);
-                    frame.setVisible(true);
+
+                    if(btn_usuario.getText().equals("cajero.Idcaj") && String.valueOf(btn_contrasenia.getPassword()).equals("cajero.Password")){
+
+                           JFrame frame = new JFrame("Menu Principal");
+                           frame.setContentPane(new Cajero().CajeroP);
+                           frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                           closeLoginFrame();
+                           frame.pack();
+                           frame.setLocationRelativeTo(null);
+                           frame.setVisible(true);
+
+                   } else{
+                        JOptionPane.showMessageDialog(null, "Usuario y/o Contraseña Incorrecto");
+                   }
+
                 } else if (Combo_CA.getSelectedItem().equals("Administrador")) {
                     JFrame frame = new JFrame("Administrador");
                     frame.setContentPane(new Admin().admini);
@@ -60,16 +68,8 @@ public class principal {
                     JOptionPane.showMessageDialog(null, "No se puede acceder al sistema");
                 }
 
-
-
-
-
-
             }
         });
-
-
-
 
     }
 //creamoas la funcion para cerrar otras ventanas y abrir la siguiente
