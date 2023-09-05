@@ -36,18 +36,38 @@ public class Cajero {
     private JButton FACTURAButton;
     private JTextField TNumFac;
     private JButton BVISTA;
-    int contador = 0;
+
+    public Cajero(int numFac, int IDCAJERO) {
+        this.NumFac = numFac;
+        this.IdCajero = IDCAJERO;
+    }
+    public int getNumFac() {
+        return NumFac;
+    }
+    public void setNumFac(int numFac) {
+        NumFac = numFac;
+    }
+    public int getIDCAJERO() {
+        return IdCajero;
+    }
+    public void setIDCAJERO(int IDCAJERO) {
+        this.IdCajero = IDCAJERO;
+    }
+
     //cliente
     String Nom,Apel,Mail,Ced,Telef;
+
     //productos
     int CodigosP [] = {0,0,0,0,0};
     String NombresP [] = {"","","","",""};
     Double PreciosP [] = {0.0,0.0,0.0,0.0,0.0};
     int CantidadesP[] = {0,0,0,0,0};
     Double Subtotales [] = {0.0,0.0,0.0,0.0,0.0};
+
     //Total Factura
     double Subtotal, Valoriva= 0.12 ,Total;
-    int NumFac;
+    int NumFac,IdCajero;
+
     //Conexion
     static String DB_URL="jdbc:mysql://localhost/PROYECTO2023A";
     static String USER="root";
@@ -122,12 +142,15 @@ public class Cajero {
                         throw new RuntimeException(eX);
                     }
                 }
+                Factura factura = new Factura(NumFac,IdCajero);
+                Factura.setVisible(true);
             }
         });
         BVISTA.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 NumFac = Integer.parseInt(TNumFac.getText());
+                IdCajero = 123455;
                 //cliente
                 Ced = TCEDULA.getText();
                 Nom = TNOMBRE.getText();
