@@ -107,16 +107,11 @@ public class Cajero {
 
     }
 
-/*
     public static void main(String[] args) {
-
-        JFrame frame = new JFrame("Menu Principal");
-        frame.setContentPane(new Cajero().LCajero);
+        JFrame frame = new JFrame("Cajero");
+        frame.setContentPane(new Cajero().CajeroP);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
-        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-
-    }*/
-    // el main no es nesesario aqui
+    }
 }
