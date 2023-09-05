@@ -40,7 +40,7 @@ public class Admin {
                 String contrasenia = passCajero.getText();
 
                 try(Connection conn = DriverManager.getConnection(DB_URL,user, pass)){
-                    String sql = "INSERT INTO Cajero (IDcaj, Nombrecaj, Apellidocaj, Correocaj, Contraseniacaj) VALUES (?, ?, ?, ?, ?)";
+                    String sql = "INSERT INTO Cajero (ID, Nombre, Apellido, Correo, Contrasenia) VALUES (?, ?, ?, ?, ?)";
                     PreparedStatement pstmt = conn.prepareStatement(sql);
                     pstmt.setString(1, String.valueOf(codigoc)); // Obtener valor desde JTextField
                     pstmt.setString(2, nombre); // Obtener valor desde JTextField
@@ -120,7 +120,7 @@ public class Admin {
 
 
                 try (Connection conn = DriverManager.getConnection(DB_URL, user, pass)) {
-                    String sql = "SELECT COUNT(Numfac) FROM Factura  where IDCaj = ?";
+                    String sql = "SELECT COUNT(numfac) FROM Factura  where IDCaj = ?";
                     PreparedStatement pstmt = conn.prepareStatement(sql);
                     pstmt.setInt(1, codC);
 
