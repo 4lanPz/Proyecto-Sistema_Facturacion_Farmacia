@@ -38,23 +38,6 @@ public class Cajero {
     private JTextField TNumFac;
     private JButton BVISTA;
 
-    public Cajero(int numFac, int IDCAJERO) {
-        this.NumFac = numFac;
-        this.IdCajero = IDCAJERO;
-    }
-    public int getNumFac() {
-        return NumFac;
-    }
-    public void setNumFac(int numFac) {
-        NumFac = numFac;
-    }
-    public int getIDCAJERO() {
-        return IdCajero;
-    }
-    public void setIDCAJERO(int IDCAJERO) {
-        this.IdCajero = IDCAJERO;
-    }
-
     //cliente
     String Nom,Apel,Mail,Ced,Telef;
 
@@ -65,19 +48,25 @@ public class Cajero {
     int CantidadesP[] = {0,0,0,0,0};
     Double Subtotales [] = {0.0,0.0,0.0,0.0,0.0};
 
+
     //Total Factura
     double Subtotal, Valoriva= 0.12 ,Total;
-    int NumFac,IdCajero;
-
+    int NumFac,IdCajero = principal.ID_CajeroLogueado;
+    public static int Numero_Factura = 0;
     //Conexion
-    static String DB_URL="jdbc:mysql://localhost/PROYECTO2023A";
-    static String USER="root";
-    static String PASS="root_bas3";
+    //static String DB_URL="jdbc:mysql://localhost/PROYECTO2023A";
+    //static String USER="root";
+    //static String PASS="root_bas3";
+    String conexion= "jdbc:sqlserver://localhost:1433;" +
+            "database=PROYECTO2023A;" +
+            "user=root;" +
+            "password=root_1;" +
+            "trustServerCertificate=true;";
 
     public void CODIGOPRODUCTO(){
         for (int i = 0; i <= 4 ; i++){
             String SELECT_QUERY="SELECT * FROM Producto WHERE COD = ?";
-            try(Connection conn=DriverManager.getConnection(DB_URL,USER,PASS);)
+            try(Connection conn=DriverManager.getConnection(conexion);)
             {
                 PreparedStatement statement = conn.prepareStatement(SELECT_QUERY);
                 statement.setString(1, String.valueOf(CodigosP[i]));
@@ -106,13 +95,14 @@ public class Cajero {
     public void CALCULOS(){
         for (int i = 0; i <= 4 ; i++){
             String SELECT_QUERY="SELECT * FROM Producto WHERE COD = ?";
-            try(Connection conn=DriverManager.getConnection(DB_URL,USER,PASS);)
+            try(Connection conn=DriverManager.getConnection(conexion);)
             {
                 PreparedStatement statement = conn.prepareStatement(SELECT_QUERY);
                 statement.setString(1, String.valueOf(CodigosP[i]));
                 ResultSet rs = statement.executeQuery();
                 while (rs.next()) {
                     PreciosP[i] = Double.valueOf(rs.getString("Precio"));
+
                 }
             }
             catch (SQLException eX){
@@ -126,15 +116,29 @@ public class Cajero {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //Ingresar los valores de las facturas
+                String Q_Ingresar ="INSERT INTO CLIENTE VALUES(?,?,?,?,?)";
+                try(Connection conn=DriverManager.getConnection(conexion);)
+                {
+                    PreparedStatement statement = conn.prepareStatement(Q_Ingresar);
+                    statement.setInt(1, Integer.parseInt(Ced));
+                    statement.setString(2, Nom);
+                    statement.setString(3, Apel);
+                    statement.setString(4, Mail);
+                    statement.setString(5, Telef);
+                    statement.executeUpdate();
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+
                 for (int i = 0; i <= 4 ; i++){
                     String Ingresar_FAC ="INSERT INTO Factura VALUES(?,?,?,?,?)";
-                    try(Connection conn=DriverManager.getConnection(DB_URL,USER,PASS);)
+                    try(Connection conn=DriverManager.getConnection(conexion);)
                     {
                         PreparedStatement statement = conn.prepareStatement(Ingresar_FAC);
                         statement.setInt(1, NumFac);
                         statement.setInt(2, CantidadesP[i]);
-                        statement.setInt(3, 123);
-                        statement.setInt(4, 123);
+                        statement.setInt(3, IdCajero);
+                        statement.setInt(4, Integer.parseInt(Ced));
                         statement.setInt(5, CodigosP[i]);
                         statement.executeUpdate();
                     }
@@ -142,14 +146,35 @@ public class Cajero {
                         throw new RuntimeException(eX);
                     }
                 }
-                Factura factura = new Factura(NumFac,IdCajero);
+                for (int i = 0; i <= 4 ; i++){
+                    String Actualizar = "UPDATE Producto SET Stock = Stock - ? WHERE COD = ?";
+                    try(Connection conn=DriverManager.getConnection(conexion);)
+                    {
+                        PreparedStatement updateStatement = conn.prepareStatement(Actualizar);
+                        updateStatement.setInt(1, CantidadesP[i]);
+                        updateStatement.setInt(2, CodigosP[i]);
+                        updateStatement.executeUpdate();
+                    } catch (SQLException eX) {
+                        throw new RuntimeException(eX);
+                    }
+                }
+                JFrame frame = new JFrame("Factura");
+                Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+                int xPos = (screenSize.width - frame.getWidth()) / 2;
+                int yPos = (screenSize.height - frame.getHeight()) / 2;
+                frame.setLocation(xPos, yPos);
+                frame.setContentPane(new Factura().PFactura);
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                frame.setSize(800,900);
+                frame.setLocationRelativeTo(null);
+                frame.setVisible(true);
             }
         });
         BVISTA.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 NumFac = Integer.parseInt(TNumFac.getText());
-                IdCajero = 123455;
+                Numero_Factura = NumFac;
                 //cliente
                 Ced = TCEDULA.getText();
                 Nom = TNOMBRE.getText();
@@ -164,12 +189,13 @@ public class Cajero {
                 CodigosP[4] = Integer.parseInt(TCOD5.getText());
                 CODIGOPRODUCTO();
 
-                //CANTIDADES
+                //CANTIDADES Y stock
                 CantidadesP[0] = Integer.parseInt(TCANTIDAD1.getText());
                 CantidadesP[1] = Integer.parseInt(TCANTIDAD2.getText());
                 CantidadesP[2] = Integer.parseInt(TCANTIDAD3.getText());
                 CantidadesP[3] = Integer.parseInt(TCANTIDAD4.getText());
                 CantidadesP[4] = Integer.parseInt(TCANTIDAD5.getText());
+
                 CALCULOS();
                 //Calculos
                 for (int i = 0; i <=4; i++){
@@ -179,20 +205,7 @@ public class Cajero {
                 TSUBT.setText(String.valueOf(Subtotal));
                 Total=Subtotal+(Subtotal*Valoriva);
                 TTOTAL.setText(String.valueOf(Total));
-                //Ingres valores del cliente
-                String Q_Ingresar ="INSERT INTO CLIENTE VALUES(?,?,?,?,?)";
-                try(Connection conn=DriverManager.getConnection(DB_URL,USER,PASS);)
-                {
-                    PreparedStatement statement = conn.prepareStatement(Q_Ingresar);
-                    statement.setInt(1, Integer.parseInt(Ced));
-                    statement.setString(2, Nom);
-                    statement.setString(3, Apel);
-                    statement.setString(4, Mail);
-                    statement.setString(5, Telef);
-                    statement.executeUpdate();
-                } catch (SQLException ex) {
-                    throw new RuntimeException(ex);
-                }
+
             }
         });
     }
@@ -204,8 +217,9 @@ public class Cajero {
         int yPos = (screenSize.height - frame.getHeight()) / 2;
         frame.setLocation(xPos, yPos);
         frame.setContentPane(new Cajero().CajeroP);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setSize(1000,800);
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 }

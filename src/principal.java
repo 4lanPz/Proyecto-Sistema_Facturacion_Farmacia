@@ -22,6 +22,7 @@ public class principal {
     String contraseniaa;
     int ID_Cajero = 0;
     int ID_Administrador = 0;
+    public static int ID_CajeroLogueado = 0;
 
     String conexion= "jdbc:sqlserver://localhost:1433;" +
             "database=PROYECTO2023A;" +
@@ -52,6 +53,7 @@ public class principal {
                         ResultSet rs = statement.executeQuery();
                         while (rs.next()) {
                             ID_Cajero = Integer.parseInt(rs.getString("ID"));
+                            ID_CajeroLogueado = ID_Cajero;
                         }
                     } catch (SQLException ex) {
                         throw new RuntimeException(ex);
