@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
@@ -21,15 +22,18 @@ public class Admin {
     public JPanel admini;
     private JTextField codigoS;
     private JSeparator s;
+    String conexion= "jdbc:sqlserver://localhost:1433;" +
+            "database=CorrecionP2B;" +
+            "user=root;" +
+            "password=root_1;" +
+            "trustServerCertificate=true;";
+
+    //static final String DB_URL = "jdbc:mysql://localhost/PROYECTO2023A";
+    //static final String user = "root";
+    //static final String pass= "root_bas3";
 
     public Admin() {
         agrgarC.addActionListener(new ActionListener() {
-            static final String DB_URL = "jdbc:mysql://localhost/PROYECTO2023A";
-            //cadena de conexion
-            static final String user = "root";
-            //usuario
-            static final String pass= "root_bas3";
-            //paswword
             static final String query = "SELECT * FROM Cajero ";
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -39,7 +43,7 @@ public class Admin {
                 String correo = correoCajero.getText();
                 String contrasenia = passCajero.getText();
 
-                try(Connection conn = DriverManager.getConnection(DB_URL,user, pass)){
+                try(Connection conn = DriverManager.getConnection(conexion)){
                     String sql = "INSERT INTO Cajero (IDcaj, Nombrecaj, Apellidocaj, Correocaj, Contraseniacaj) VALUES (?, ?, ?, ?, ?)";
                     PreparedStatement pstmt = conn.prepareStatement(sql);
                     pstmt.setString(1, String.valueOf(codigoc)); // Obtener valor desde JTextField
@@ -47,7 +51,6 @@ public class Admin {
                     pstmt.setString(3, apellido); // Obtener valor desde JTextField
                     pstmt.setString(4, correo); // Obtener valor desde JTextField
                     pstmt.setString(5, contrasenia); // Obtener valor desde JTextField
-
 
                     int filasAfectadas = pstmt.executeUpdate();
                     System.out.println("Se han insertado " + filasAfectadas + " filas.");
@@ -68,12 +71,6 @@ public class Admin {
             }
         });
         agrgarS.addActionListener(new ActionListener() {
-            static final String DB_URL = "jdbc:mysql://localhost/PROYECTO2023A";
-            //cadena de conexion
-            static final String user = "root";
-            //usuario
-            static final String pass= "root_bas3";
-            //paswword
             static final String query = "SELECT * FROM Producto ";
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -82,7 +79,7 @@ public class Admin {
                 double price = Double.parseDouble(preStock.getText());
                 String prod = prodStock.getText();
 
-                try (Connection conn = DriverManager.getConnection(DB_URL, user, pass)) {
+                try (Connection conn = DriverManager.getConnection(conexion)) {
                     String sql = "INSERT INTO Producto (Cod, Nom, Precio, Stock) VALUES (?, ?, ?, ?)";
                     PreparedStatement pstmt = conn.prepareStatement(sql);
                     pstmt.setInt(1, coS);
@@ -107,19 +104,11 @@ public class Admin {
         });
 
         revisionF.addActionListener(new ActionListener() {
-            static final String DB_URL = "jdbc:mysql://localhost/PROYECTO2023A";
-            //cadena de conexion
-            static final String user = "root";
-            //usuario
-            static final String pass= "root_bas3";
-            //paswword
             static final String query = "SELECT * FROM Factura  ";
             @Override
             public void actionPerformed(ActionEvent e) {
                 int codC = Integer.parseInt(codcajeroF.getText());
-
-
-                try (Connection conn = DriverManager.getConnection(DB_URL, user, pass)) {
+                try (Connection conn = DriverManager.getConnection(conexion)) {
                     String sql = "SELECT COUNT(Numfac) FROM Factura  where IDCaj = ?";
                     PreparedStatement pstmt = conn.prepareStatement(sql);
                     pstmt.setInt(1, codC);
@@ -143,15 +132,4 @@ public class Admin {
         });
 
     }
-    public void setVisible(boolean b) {
-
-    }
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Administrador");
-        frame.setContentPane(new Admin().admini);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-    }
-
 }

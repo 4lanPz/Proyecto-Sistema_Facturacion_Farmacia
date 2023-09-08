@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
@@ -69,20 +70,14 @@ public class Cajero {
     int NumFac,IdCajero;
 
     //Conexion
-    //static String DB_URL="jdbc:mysql://localhost/PruebaAlan";
-    //static String USER="root";
-    //static String PASS="root_bas3";
-    String conexion = "jdbc:sqlserver://localhost:1433;" +
-            "database=CorrecionP2B;" +
-            "user=root;" +
-            "password=root_1;" +
-            "trustServerCertificate=true;";
+    static String DB_URL="jdbc:mysql://localhost/PROYECTO2023A";
+    static String USER="root";
+    static String PASS="root_bas3";
 
     public void CODIGOPRODUCTO(){
         for (int i = 0; i <= 4 ; i++){
             String SELECT_QUERY="SELECT * FROM Producto WHERE COD = ?";
-            //try(Connection conn=DriverManager.getConnection(DB_URL,USER,PASS);)
-            try(Connection conn=DriverManager.getConnection(conexion);)
+            try(Connection conn=DriverManager.getConnection(DB_URL,USER,PASS);)
             {
                 PreparedStatement statement = conn.prepareStatement(SELECT_QUERY);
                 statement.setString(1, String.valueOf(CodigosP[i]));
@@ -148,7 +143,6 @@ public class Cajero {
                     }
                 }
                 Factura factura = new Factura(NumFac,IdCajero);
-                Factura.setVisible(true);
             }
         });
         BVISTA.addActionListener(new ActionListener() {
@@ -203,11 +197,12 @@ public class Cajero {
         });
     }
 
-    public void setVisible(boolean b) {
-    }
-
     public static void main(String[] args) {
         JFrame frame = new JFrame("Cajero");
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int xPos = (screenSize.width - frame.getWidth()) / 2;
+        int yPos = (screenSize.height - frame.getHeight()) / 2;
+        frame.setLocation(xPos, yPos);
         frame.setContentPane(new Cajero().CajeroP);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
