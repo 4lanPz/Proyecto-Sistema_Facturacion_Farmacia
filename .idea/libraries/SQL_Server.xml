@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="SQL Server">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/imagenes/mysql-connector-j-8.0.33.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/imagenes/pdfbox-app-3.0.0.jar!/" />
+      <root url="file://$PROJECT_DIR$/src/imagenes/SQL Server" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/src/imagenes/SQL Server" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/src/imagenes/SQL Server" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/src/imagenes/SQL Server" recursive="false" type="SOURCES" />
+  </library>
+</component>
