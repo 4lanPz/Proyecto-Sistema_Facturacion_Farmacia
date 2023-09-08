@@ -8,14 +8,6 @@
     <properties/>
     <border type="none"/>
     <children>
-      <component id="dcc42" class="javax.swing.JButton" binding="revisionF">
-        <constraints>
-          <grid row="9" column="0" row-span="2" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Revision Facturas"/>
-        </properties>
-      </component>
       <component id="ee9d4" class="javax.swing.JLabel">
         <constraints>
           <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
@@ -158,14 +150,6 @@
         </constraints>
         <properties/>
       </component>
-      <component id="f54e1" class="javax.swing.JButton" binding="agrgarC">
-        <constraints>
-          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Agregar cajero"/>
-        </properties>
-      </component>
       <component id="2fc41" class="javax.swing.JLabel">
         <constraints>
           <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
@@ -203,6 +187,8 @@
           <grid row="6" column="0" row-span="2" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-15089765"/>
+          <foreground color="-15660792"/>
           <text value="Agregar Stock"/>
         </properties>
       </component>
@@ -252,6 +238,26 @@
           <font name="Arial Black" size="24" style="1"/>
           <foreground color="-15660792"/>
           <text value="ADMINISTRADOR"/>
+        </properties>
+      </component>
+      <component id="dcc42" class="javax.swing.JButton" binding="revisionF">
+        <constraints>
+          <grid row="9" column="0" row-span="2" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-15089765"/>
+          <foreground color="-15660792"/>
+          <text value="Revision Facturas"/>
+        </properties>
+      </component>
+      <component id="f54e1" class="javax.swing.JButton" binding="agrgarC">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-15089765"/>
+          <foreground color="-15660792"/>
+          <text value="Agregar cajero"/>
         </properties>
       </component>
     </children>
