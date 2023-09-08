@@ -3,9 +3,11 @@
   <grid id="27dc6" binding="CajeroP" layout-manager="GridLayoutManager" row-count="24" column-count="9" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="20" left="50" bottom="20" right="50"/>
     <constraints>
-      <xy x="20" y="20" width="1014" height="777"/>
+      <xy x="20" y="20" width="1014" height="796"/>
     </constraints>
-    <properties/>
+    <properties>
+      <background color="-3679252"/>
+    </properties>
     <border type="none"/>
     <children>
       <component id="d8b92" class="javax.swing.JLabel" binding="LCajero">
@@ -13,7 +15,8 @@
           <grid row="0" column="1" row-span="1" col-span="7" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <font size="28" style="1"/>
+          <font name="Verdana" size="28" style="1"/>
+          <foreground color="-16777216"/>
           <text value="CAJERO"/>
         </properties>
       </component>
@@ -32,6 +35,8 @@
           <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Verdana" size="16" style="1"/>
+          <foreground color="-16777216"/>
           <text value="NOMBRE"/>
         </properties>
       </component>
@@ -41,7 +46,10 @@
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <font name="Verdana" size="16"/>
+          <foreground color="-16777216"/>
+        </properties>
       </component>
       <component id="50c6" class="javax.swing.JTextField" binding="TAPELLIDO">
         <constraints>
@@ -49,7 +57,10 @@
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <font name="Verdana" size="16"/>
+          <foreground color="-16777216"/>
+        </properties>
       </component>
       <component id="27078" class="javax.swing.JTextField" binding="TCORREO">
         <constraints>
@@ -57,7 +68,10 @@
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <font name="Verdana" size="16"/>
+          <foreground color="-16777216"/>
+        </properties>
       </component>
       <component id="377cd" class="javax.swing.JTextField" binding="TTELEF">
         <constraints>
@@ -65,13 +79,18 @@
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <font name="Verdana" size="16"/>
+          <foreground color="-16777216"/>
+        </properties>
       </component>
       <component id="194c0" class="javax.swing.JLabel">
         <constraints>
           <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Verdana" size="16" style="1"/>
+          <foreground color="-16777216"/>
           <text value="APELLIDO"/>
         </properties>
       </component>
@@ -80,6 +99,8 @@
           <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Verdana" size="16" style="1"/>
+          <foreground color="-16777216"/>
           <text value="CORREO"/>
         </properties>
       </component>
@@ -88,6 +109,8 @@
           <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Verdana" size="16" style="1"/>
+          <foreground color="-16777216"/>
           <text value="TELEFONO"/>
         </properties>
       </component>
@@ -96,6 +119,8 @@
           <grid row="2" column="1" row-span="1" col-span="7" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Verdana" size="18" style="1"/>
+          <foreground color="-16777216"/>
           <text value="DATOS CLIENTE"/>
         </properties>
       </component>
@@ -104,6 +129,8 @@
           <grid row="10" column="1" row-span="1" col-span="7" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Verdana" size="18" style="1"/>
+          <foreground color="-16777216"/>
           <text value="DATOS FACTURA"/>
         </properties>
       </component>
@@ -112,6 +139,8 @@
           <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Verdana" size="16" style="1"/>
+          <foreground color="-16777216"/>
           <text value="CEDULA"/>
         </properties>
       </component>
@@ -121,45 +150,64 @@
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <font name="Verdana" size="16"/>
+          <foreground color="-16777216"/>
+        </properties>
       </component>
       <component id="16563" class="javax.swing.JLabel">
         <constraints>
           <grid row="13" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
+            <preferred-size width="180" height="-1"/>
           </grid>
         </constraints>
         <properties>
+          <font name="Verdana" size="16" style="1"/>
+          <foreground color="-16777216"/>
+          <horizontalAlignment value="0"/>
+          <horizontalTextPosition value="0"/>
           <text value="CODIGO"/>
         </properties>
       </component>
       <component id="3fce2" class="javax.swing.JLabel">
         <constraints>
           <grid row="13" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
+            <preferred-size width="170" height="-1"/>
           </grid>
         </constraints>
         <properties>
+          <font name="Verdana" size="16" style="1"/>
+          <foreground color="-16777216"/>
+          <horizontalAlignment value="0"/>
+          <horizontalTextPosition value="0"/>
           <text value="PRODUCTO"/>
         </properties>
       </component>
       <component id="cf219" class="javax.swing.JLabel">
         <constraints>
           <grid row="13" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
+            <preferred-size width="170" height="-1"/>
           </grid>
         </constraints>
         <properties>
+          <font name="Verdana" size="16" style="1"/>
+          <foreground color="-16777216"/>
+          <horizontalAlignment value="0"/>
+          <horizontalTextPosition value="0"/>
           <text value="PRECIO UNITARIO"/>
         </properties>
       </component>
       <component id="f9901" class="javax.swing.JLabel">
         <constraints>
           <grid row="13" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
+            <preferred-size width="170" height="-1"/>
           </grid>
         </constraints>
         <properties>
+          <font name="Verdana" size="16" style="1"/>
+          <foreground color="-16777216"/>
+          <horizontalAlignment value="0"/>
+          <horizontalTextPosition value="0"/>
           <text value="CANTIDAD"/>
         </properties>
       </component>
@@ -176,10 +224,13 @@
       <component id="a86dc" class="javax.swing.JTextField" binding="TCOD1">
         <constraints>
           <grid row="14" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
+            <preferred-size width="170" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <font name="Verdana" size="16"/>
+          <foreground color="-16777216"/>
+        </properties>
       </component>
       <component id="db7d6" class="javax.swing.JTextField" binding="TCANTIDAD1">
         <constraints>
@@ -187,13 +238,18 @@
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <font name="Verdana" size="16"/>
+          <foreground color="-16777216"/>
+        </properties>
       </component>
       <component id="5ec8d" class="javax.swing.JLabel">
         <constraints>
           <grid row="20" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Verdana" size="16" style="1"/>
+          <foreground color="-16777216"/>
           <text value="SUBTOTAL"/>
         </properties>
       </component>
@@ -202,6 +258,8 @@
           <grid row="21" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Verdana" size="16" style="1"/>
+          <foreground color="-16777216"/>
           <text value="TOTAL A PAGAR"/>
         </properties>
       </component>
@@ -210,6 +268,8 @@
           <grid row="21" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Verdana" size="16"/>
+          <foreground color="-16777216"/>
           <text value=""/>
         </properties>
       </component>
@@ -218,6 +278,8 @@
           <grid row="20" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Verdana" size="16"/>
+          <foreground color="-16777216"/>
           <text value=""/>
         </properties>
       </component>
@@ -226,6 +288,8 @@
           <grid row="14" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Verdana" size="16"/>
+          <foreground color="-16777216"/>
           <text value=""/>
         </properties>
       </component>
@@ -234,6 +298,8 @@
           <grid row="14" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Verdana" size="16"/>
+          <foreground color="-16777216"/>
           <text value=""/>
         </properties>
       </component>
@@ -243,7 +309,10 @@
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <font name="Verdana" size="16"/>
+          <foreground color="-16777216"/>
+        </properties>
       </component>
       <component id="41210" class="javax.swing.JTextField" binding="TCOD3">
         <constraints>
@@ -251,7 +320,10 @@
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <font name="Verdana" size="16"/>
+          <foreground color="-16777216"/>
+        </properties>
       </component>
       <component id="ad22a" class="javax.swing.JTextField" binding="TCOD4">
         <constraints>
@@ -259,7 +331,10 @@
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <font name="Verdana" size="16"/>
+          <foreground color="-16777216"/>
+        </properties>
       </component>
       <component id="cb016" class="javax.swing.JTextField" binding="TCOD5">
         <constraints>
@@ -267,13 +342,18 @@
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <font name="Verdana" size="16"/>
+          <foreground color="-16777216"/>
+        </properties>
       </component>
       <component id="78003" class="javax.swing.JLabel" binding="TPROD2">
         <constraints>
           <grid row="15" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Verdana" size="16"/>
+          <foreground color="-16777216"/>
           <text value=""/>
         </properties>
       </component>
@@ -282,6 +362,8 @@
           <grid row="16" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Verdana" size="16"/>
+          <foreground color="-16777216"/>
           <text value=""/>
         </properties>
       </component>
@@ -290,6 +372,8 @@
           <grid row="17" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Verdana" size="16"/>
+          <foreground color="-16777216"/>
           <text value=""/>
         </properties>
       </component>
@@ -298,6 +382,8 @@
           <grid row="18" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Verdana" size="16"/>
+          <foreground color="-16777216"/>
           <text value=""/>
         </properties>
       </component>
@@ -306,6 +392,8 @@
           <grid row="15" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Verdana" size="16"/>
+          <foreground color="-16777216"/>
           <text value=""/>
         </properties>
       </component>
@@ -314,6 +402,8 @@
           <grid row="16" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Verdana" size="16"/>
+          <foreground color="-16777216"/>
           <text value=""/>
         </properties>
       </component>
@@ -322,6 +412,8 @@
           <grid row="17" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Verdana" size="16"/>
+          <foreground color="-16777216"/>
           <text value=""/>
         </properties>
       </component>
@@ -330,6 +422,8 @@
           <grid row="18" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Verdana" size="16"/>
+          <foreground color="-16777216"/>
           <text value=""/>
         </properties>
       </component>
@@ -339,7 +433,10 @@
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <font name="Verdana" size="16"/>
+          <foreground color="-16777216"/>
+        </properties>
       </component>
       <component id="b0b2f" class="javax.swing.JTextField" binding="TCANTIDAD3">
         <constraints>
@@ -347,7 +444,10 @@
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <font name="Verdana" size="16"/>
+          <foreground color="-16777216"/>
+        </properties>
       </component>
       <component id="7fb25" class="javax.swing.JTextField" binding="TCANTIDAD4">
         <constraints>
@@ -355,7 +455,10 @@
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <font name="Verdana" size="16"/>
+          <foreground color="-16777216"/>
+        </properties>
       </component>
       <component id="2ef4b" class="javax.swing.JTextField" binding="TCANTIDAD5">
         <constraints>
@@ -363,12 +466,15 @@
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <font name="Verdana" size="16"/>
+          <foreground color="-16777216"/>
+        </properties>
       </component>
       <component id="81aab" class="javax.swing.JSeparator">
         <constraints>
           <grid row="13" column="2" row-span="6" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-            <minimum-size width="5" height="50"/>
+            <preferred-size width="1" height="50"/>
           </grid>
         </constraints>
         <properties>
@@ -378,7 +484,7 @@
       <component id="2fa96" class="javax.swing.JSeparator">
         <constraints>
           <grid row="13" column="4" row-span="6" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-            <minimum-size width="5" height="50"/>
+            <minimum-size width="-1" height="50"/>
           </grid>
         </constraints>
         <properties>
@@ -388,7 +494,7 @@
       <component id="f0ee5" class="javax.swing.JSeparator">
         <constraints>
           <grid row="13" column="6" row-span="6" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-            <minimum-size width="5" height="50"/>
+            <minimum-size width="-1" height="50"/>
           </grid>
         </constraints>
         <properties>
@@ -458,7 +564,7 @@
       <component id="360ee" class="javax.swing.JSeparator">
         <constraints>
           <grid row="1" column="0" row-span="21" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-            <minimum-size width="5" height="50"/>
+            <preferred-size width="5" height="50"/>
           </grid>
         </constraints>
         <properties>
@@ -470,6 +576,8 @@
           <grid row="12" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Verdana" size="18" style="1"/>
+          <foreground color="-16777216"/>
           <text value="NUMERO FACTURA"/>
         </properties>
       </component>
@@ -480,6 +588,7 @@
           </grid>
         </constraints>
         <properties>
+          <font name="Verdana" size="18"/>
           <text value=""/>
         </properties>
       </component>
@@ -488,6 +597,8 @@
           <grid row="23" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Verdana" size="16" style="1"/>
+          <foreground color="-16777216"/>
           <text value="GENERAR FACTURA"/>
         </properties>
       </component>
@@ -496,6 +607,8 @@
           <grid row="23" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Verdana" size="16" style="1"/>
+          <foreground color="-16777216"/>
           <text value="VISTA PREVIA"/>
         </properties>
       </component>
