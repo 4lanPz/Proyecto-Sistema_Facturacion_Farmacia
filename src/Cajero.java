@@ -209,17 +209,4 @@ public class Cajero {
             }
         });
     }
-
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Cajero");
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int xPos = (screenSize.width - frame.getWidth()) / 2;
-        int yPos = (screenSize.height - frame.getHeight()) / 2;
-        frame.setLocation(xPos, yPos);
-        frame.setContentPane(new Cajero().CajeroP);
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setSize(1000,800);
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
-    }
 }
