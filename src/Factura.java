@@ -60,20 +60,15 @@ public class Factura {
     int NumFac = Cajero.Numero_Factura,IDCajero = principal.ID_CajeroLogueado;
 
     //Conexion
-    static String DB_URL="jdbc:mysql://localhost/PruebaAlan";
+    static String DB_URL="jdbc:mysql://localhost/PROYECTO2023A";
     static String USER="root";
     static String PASS="root_bas3";
 
-    String conexion= "jdbc:sqlserver://localhost:1433;" +
-            "database=PROYECTO2023A;" +
-            "user=root;" +
-            "password=root_1;" +
-            "trustServerCertificate=true;";
     public void datos(){
             String SELECT_QUERY="Select Cantidad,Nombre,Apellido,CedulaCli,Codprod,Nombrecli,Apelcli,Correocli,Telef,Nom,Precio " +
                     "From Factura, Cliente, Producto, Cajero " +
                     "where Cedula = CedulaCli and Codprod = Cod and Numfac = ? and IDCaj = ?";
-            try(Connection conn=DriverManager.getConnection(conexion);)
+            try(Connection conn=DriverManager.getConnection(DB_URL,USER,PASS);)
             {
                 PreparedStatement statement = conn.prepareStatement(SELECT_QUERY);
                 statement.setString(1, String.valueOf(NumFac));

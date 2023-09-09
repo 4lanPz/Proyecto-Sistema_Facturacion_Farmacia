@@ -24,14 +24,9 @@ public class principal {
     int ID_Administrador = 0;
     public static int ID_CajeroLogueado = 0;
 
-    String conexion= "jdbc:sqlserver://localhost:1433;" +
-            "database=PROYECTO2023A;" +
-            "user=root;" +
-            "password=root_1;" +
-            "trustServerCertificate=true;";
-    //static final String DB_URL = "jdbc:mysql://localhost/PROYECTO2023A";
-    //static final String USER = "root";
-    //static final String PASS = "root_bas3";
+    static final String DB_URL = "jdbc:mysql://localhost/PROYECTO2023A";
+    static final String USER = "root";
+    static final String PASS = "root_bas3";
 
     public principal() {
         btn_ingresar.addActionListener(new ActionListener() {
@@ -45,7 +40,7 @@ public class principal {
                     contraseniaa = btn_contrasenia.getText();
                     //conexion y comprobacion
                     String Query="Select ID,Correo, Contrasenia from Cajero where correo = ? and Contrasenia = ?";
-                    try(Connection conn=DriverManager.getConnection(conexion);)
+                    try(Connection conn=DriverManager.getConnection(DB_URL,USER,PASS);)
                     {
                         PreparedStatement statement = conn.prepareStatement(Query);
                         statement.setString(1, usuarioo);
@@ -79,7 +74,7 @@ public class principal {
                     contraseniaa = btn_contrasenia.getText();
                     //conexion y comprobacion
                     String Query="Select ID,Correo, Contrasenia from Administrador where correo = ? and Contrasenia = ?";
-                    try(Connection conn=DriverManager.getConnection(conexion);)
+                    try(Connection conn=DriverManager.getConnection(DB_URL,USER,PASS);)
                     {
                         PreparedStatement statement = conn.prepareStatement(Query);
                         statement.setString(1, usuarioo);
