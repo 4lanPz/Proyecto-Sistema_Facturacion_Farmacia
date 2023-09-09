@@ -54,19 +54,14 @@ public class Cajero {
     int NumFac,IdCajero = principal.ID_CajeroLogueado;
     public static int Numero_Factura = 0;
     //Conexion
-    //static String DB_URL="jdbc:mysql://localhost/PROYECTO2023A";
-    //static String USER="root";
-    //static String PASS="root_bas3";
-    String conexion= "jdbc:sqlserver://localhost:1433;" +
-            "database=PROYECTO2023A;" +
-            "user=root;" +
-            "password=root_1;" +
-            "trustServerCertificate=true;";
+    static String DB_URL="jdbc:mysql://localhost/PROYECTO2023A";
+    static String USER="root";
+    static String PASS="root_bas3";
 
     public void CODIGOPRODUCTO(){
         for (int i = 0; i <= 4 ; i++){
             String SELECT_QUERY="SELECT * FROM Producto WHERE COD = ?";
-            try(Connection conn=DriverManager.getConnection(conexion);)
+            try(Connection conn=DriverManager.getConnection(DB_URL,USER,PASS);)
             {
                 PreparedStatement statement = conn.prepareStatement(SELECT_QUERY);
                 statement.setString(1, String.valueOf(CodigosP[i]));
@@ -95,7 +90,7 @@ public class Cajero {
     public void CALCULOS(){
         for (int i = 0; i <= 4 ; i++){
             String SELECT_QUERY="SELECT * FROM Producto WHERE COD = ?";
-            try(Connection conn=DriverManager.getConnection(conexion);)
+            try(Connection conn=DriverManager.getConnection(DB_URL,USER,PASS);)
             {
                 PreparedStatement statement = conn.prepareStatement(SELECT_QUERY);
                 statement.setString(1, String.valueOf(CodigosP[i]));
@@ -117,7 +112,7 @@ public class Cajero {
             public void actionPerformed(ActionEvent e) {
                 //Ingresar los valores de las facturas
                 String Q_Ingresar ="INSERT INTO CLIENTE VALUES(?,?,?,?,?)";
-                try(Connection conn=DriverManager.getConnection(conexion);)
+                try(Connection conn=DriverManager.getConnection(DB_URL,USER,PASS);)
                 {
                     PreparedStatement statement = conn.prepareStatement(Q_Ingresar);
                     statement.setInt(1, Integer.parseInt(Ced));
@@ -132,7 +127,7 @@ public class Cajero {
 
                 for (int i = 0; i <= 4 ; i++){
                     String Ingresar_FAC ="INSERT INTO Factura VALUES(?,?,?,?,?)";
-                    try(Connection conn=DriverManager.getConnection(conexion);)
+                    try(Connection conn=DriverManager.getConnection(DB_URL,USER,PASS);)
                     {
                         PreparedStatement statement = conn.prepareStatement(Ingresar_FAC);
                         statement.setInt(1, NumFac);
@@ -148,7 +143,7 @@ public class Cajero {
                 }
                 for (int i = 0; i <= 4 ; i++){
                     String Actualizar = "UPDATE Producto SET Stock = Stock - ? WHERE COD = ?";
-                    try(Connection conn=DriverManager.getConnection(conexion);)
+                    try(Connection conn=DriverManager.getConnection(DB_URL,USER,PASS);)
                     {
                         PreparedStatement updateStatement = conn.prepareStatement(Actualizar);
                         updateStatement.setInt(1, CantidadesP[i]);
