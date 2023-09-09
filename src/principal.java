@@ -27,7 +27,6 @@ public class principal {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Tipo_user = (String) Combo_CA.getSelectedItem();
-
                 //para abrir ventana Cajero
                 if (Tipo_user == "Cajero" ){
                     usuarioo = btn_usuario.getText();
