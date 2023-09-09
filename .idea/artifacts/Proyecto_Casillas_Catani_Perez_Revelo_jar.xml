@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Proyecto_Casillas-Catani-Perez-Revelo:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Proyecto_Casillas_Catani_Perez_Revelo_jar</output-path>
+    <root id="archive" name="Proyecto_Casillas-Catani-Perez-Revelo.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/out/artifacts/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="Proyecto_Casillas-Catani-Perez-Revelo" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/imagenes/pdfbox-app-3.0.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/imagenes/mysql-connector-j-8.0.33.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

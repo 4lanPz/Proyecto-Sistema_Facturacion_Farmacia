@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.sql.*;
 
 public class principal {
-
     JPanel jPanel;
     private JComboBox Combo_CA;
     private JTextField btn_usuario;
