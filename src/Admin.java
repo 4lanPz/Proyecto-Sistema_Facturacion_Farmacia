@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
@@ -18,23 +17,17 @@ public class Admin {
     private JTextField prodStock;
     private JButton agrgarS;
     private JTextField codcajeroF;
-    private JTextField ventaF;
     public JPanel admini;
     private JTextField codigoS;
     private JSeparator s;
-    String conexion= "jdbc:sqlserver://localhost:1433;" +
-            "database=CorrecionP2B;" +
-            "user=root;" +
-            "password=root_1;" +
-            "trustServerCertificate=true;";
+    private JLabel ventas;
 
-    //static final String DB_URL = "jdbc:mysql://localhost/PROYECTO2023A";
-    //static final String user = "root";
-    //static final String pass= "root_bas3";
+    static final String DB_URL = "jdbc:mysql://localhost/PROYECTO2023A";
+    static final String user = "root";
+    static final String pass= "root_bas3";
 
     public Admin() {
         agrgarC.addActionListener(new ActionListener() {
-            static final String query = "SELECT * FROM Cajero ";
             @Override
             public void actionPerformed(ActionEvent e) {
                 int codigoc = Integer.parseInt(codCajero.getText());
@@ -43,14 +36,15 @@ public class Admin {
                 String correo = correoCajero.getText();
                 String contrasenia = passCajero.getText();
 
-                try(Connection conn = DriverManager.getConnection(conexion)){
-                    String sql = "INSERT INTO Cajero (IDcaj, Nombrecaj, Apellidocaj, Correocaj, Contraseniacaj) VALUES (?, ?, ?, ?, ?)";
+                try(Connection conn = DriverManager.getConnection(DB_URL,user, pass)){
+                    String sql = "INSERT INTO Cajero (ID, Nombre, Apellido, Correo, Contrasenia) VALUES (?, ?, ?, ?, ?)";
                     PreparedStatement pstmt = conn.prepareStatement(sql);
                     pstmt.setString(1, String.valueOf(codigoc)); // Obtener valor desde JTextField
                     pstmt.setString(2, nombre); // Obtener valor desde JTextField
                     pstmt.setString(3, apellido); // Obtener valor desde JTextField
                     pstmt.setString(4, correo); // Obtener valor desde JTextField
                     pstmt.setString(5, contrasenia); // Obtener valor desde JTextField
+
 
                     int filasAfectadas = pstmt.executeUpdate();
                     System.out.println("Se han insertado " + filasAfectadas + " filas.");
@@ -71,65 +65,50 @@ public class Admin {
             }
         });
         agrgarS.addActionListener(new ActionListener() {
-            static final String query = "SELECT * FROM Producto ";
             @Override
             public void actionPerformed(ActionEvent e) {
                 int coS = Integer.parseInt(codigoS.getText());
                 int cantidadS = Integer.parseInt(cantStock.getText());
-                double price = Double.parseDouble(preStock.getText());
-                String prod = prodStock.getText();
-
-                try (Connection conn = DriverManager.getConnection(conexion)) {
-                    String sql = "INSERT INTO Producto (Cod, Nom, Precio, Stock) VALUES (?, ?, ?, ?)";
-                    PreparedStatement pstmt = conn.prepareStatement(sql);
-                    pstmt.setInt(1, coS);
-                    pstmt.setString(2, prod);
-                    pstmt.setDouble(3, price);
-                    pstmt.setInt(4, cantidadS);
-
-                    int filasAfectadas = pstmt.executeUpdate();
-                    System.out.println("Se han insertado " + filasAfectadas + " filas.");
-                    pstmt.close();
-
-                    codigoS.setText("");
-                    cantStock.setText("");
-                    preStock.setText("");
-                    prodStock.setText("");
-
-                } catch (SQLException e1) {
-                    e1.printStackTrace();
+                String Actualizar = "UPDATE Producto SET Stock = Stock + ? WHERE COD = ?";
+                try(Connection conn=DriverManager.getConnection(DB_URL,user,pass);)
+                {
+                    PreparedStatement updateStatement = conn.prepareStatement(Actualizar);
+                    updateStatement.setInt(1, cantidadS);
+                    updateStatement.setInt(2, coS);
+                    updateStatement.executeUpdate();
+                } catch (SQLException eX) {
+                    throw new RuntimeException(eX);
                 }
-
             }
         });
 
         revisionF.addActionListener(new ActionListener() {
-            static final String query = "SELECT * FROM Factura  ";
             @Override
             public void actionPerformed(ActionEvent e) {
                 int codC = Integer.parseInt(codcajeroF.getText());
-                try (Connection conn = DriverManager.getConnection(conexion)) {
-                    String sql = "SELECT COUNT(Numfac) FROM Factura  where IDCaj = ?";
-                    PreparedStatement pstmt = conn.prepareStatement(sql);
-                    pstmt.setInt(1, codC);
-
-                    ResultSet resultSet = pstmt.executeQuery();
-                    if (resultSet.next()) {
-                        int numFacturas = ((ResultSet) resultSet).getInt(1);
-                        ventaF.setText(String.valueOf(numFacturas));
+                int numFacturas = 0;
+                String sql = "SELECT COUNT(numfac) as total FROM Factura  where IDCaj = ?";
+                try (Connection conn = DriverManager.getConnection(DB_URL, user, pass)) {
+                    PreparedStatement statement = conn.prepareStatement(sql);
+                    statement.setInt(1, codC);
+                    ResultSet rs = statement.executeQuery();
+                    if (rs.next()) {
+                        numFacturas = rs.getInt("total");
                     }
-
-                    resultSet.close();
-                    pstmt.close();
-
                 } catch (SQLException e1) {
                     e1.printStackTrace();
                 }
-
-
-
+                if (numFacturas %5 == 0){
+                    while (numFacturas >= 5) {
+                        numFacturas -= 4;
+                        ventas.setText(String.valueOf(numFacturas));
+                    }
+                }
+                else {
+                    numFacturas = 0;
+                    ventas.setText(String.valueOf(numFacturas));
+                }
             }
         });
-
     }
 }

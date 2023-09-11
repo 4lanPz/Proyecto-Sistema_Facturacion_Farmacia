@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Admin">
-  <grid id="27dc6" binding="admini" layout-manager="GridLayoutManager" row-count="17" column-count="7" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="admini" layout-manager="GridLayoutManager" row-count="18" column-count="7" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="20" left="20" bottom="20" right="20"/>
     <constraints>
       <xy x="20" y="20" width="971" height="595"/>
@@ -96,7 +96,7 @@
       </component>
       <component id="9fe9d" class="javax.swing.JLabel">
         <constraints>
-          <grid row="14" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="15" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <font name="Verdana" size="16" style="1"/>
@@ -107,17 +107,6 @@
       <component id="7a308" class="javax.swing.JTextField" binding="codcajeroF">
         <constraints>
           <grid row="13" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-        </constraints>
-        <properties>
-          <font name="Verdana" size="16"/>
-          <foreground color="-16777216"/>
-        </properties>
-      </component>
-      <component id="f63a9" class="javax.swing.JTextField" binding="ventaF">
-        <constraints>
-          <grid row="14" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
@@ -192,7 +181,7 @@
       </component>
       <component id="dcc42" class="javax.swing.JButton" binding="revisionF">
         <constraints>
-          <grid row="13" column="1" row-span="2" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+          <grid row="13" column="1" row-span="3" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
@@ -281,72 +270,30 @@
           <text value=""/>
         </properties>
       </component>
-      <component id="52f37" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="10" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <font name="Verdana" size="16" style="1"/>
-          <foreground color="-16777216"/>
-          <text value="Producto:"/>
-        </properties>
-      </component>
-      <component id="ec18b" class="javax.swing.JTextField" binding="prodStock">
-        <constraints>
-          <grid row="10" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-        </constraints>
-        <properties>
-          <font name="Verdana" size="16"/>
-          <foreground color="-16777216"/>
-        </properties>
-      </component>
-      <component id="8d91d" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="11" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <font name="Verdana" size="16" style="1"/>
-          <foreground color="-16777216"/>
-          <text value="Precio:"/>
-        </properties>
-      </component>
-      <component id="2a4b5" class="javax.swing.JTextField" binding="preStock">
-        <constraints>
-          <grid row="11" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-        </constraints>
-        <properties>
-          <font name="Verdana" size="16"/>
-          <foreground color="-16777216"/>
-        </properties>
-      </component>
       <vspacer id="ef661">
         <constraints>
-          <grid row="1" column="6" row-span="14" col-span="1" vsize-policy="0" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+          <grid row="1" column="6" row-span="15" col-span="1" vsize-policy="0" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
             <preferred-size width="180" height="-1"/>
           </grid>
         </constraints>
       </vspacer>
       <vspacer id="136f2">
         <constraints>
-          <grid row="1" column="0" row-span="16" col-span="1" vsize-policy="0" hsize-policy="1" anchor="0" fill="0" indent="0" use-parent-layout="false">
+          <grid row="1" column="0" row-span="17" col-span="1" vsize-policy="0" hsize-policy="1" anchor="0" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="180" height="-1"/>
           </grid>
         </constraints>
       </vspacer>
       <hspacer id="869ea">
         <constraints>
-          <grid row="16" column="1" row-span="1" col-span="5" vsize-policy="1" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
+          <grid row="17" column="1" row-span="1" col-span="5" vsize-policy="1" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="-1" height="50"/>
           </grid>
         </constraints>
       </hspacer>
       <component id="e61aa" class="javax.swing.JSeparator">
         <constraints>
-          <grid row="15" column="1" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
+          <grid row="16" column="1" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="60" height="1"/>
           </grid>
         </constraints>
@@ -370,11 +317,21 @@
       </vspacer>
       <vspacer id="462b5">
         <constraints>
-          <grid row="13" column="2" row-span="2" col-span="1" vsize-policy="0" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+          <grid row="13" column="2" row-span="3" col-span="1" vsize-policy="0" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
             <preferred-size width="20" height="-1"/>
           </grid>
         </constraints>
       </vspacer>
+      <component id="73d27" class="javax.swing.JLabel" binding="ventas">
+        <constraints>
+          <grid row="15" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Verdana" size="16"/>
+          <foreground color="-16777216"/>
+          <text value=""/>
+        </properties>
+      </component>
     </children>
   </grid>
 </form>

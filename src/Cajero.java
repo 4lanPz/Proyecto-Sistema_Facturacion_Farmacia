@@ -97,7 +97,6 @@ public class Cajero {
                 ResultSet rs = statement.executeQuery();
                 while (rs.next()) {
                     PreciosP[i] = Double.valueOf(rs.getString("Precio"));
-
                 }
             }
             catch (SQLException eX){
