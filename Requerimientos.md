@@ -1,6 +1,7 @@
 # Proyecto_Casillas-Catani-Perez-Revelo.
 
 En los requerimientos que se pide para la farmacia FARMACET:
+
 El sistema debe tener un login que me permita ingresar como administrador o como cajero.
 ![image](https://github.com/Alan-Perez02/Proyecto_Casillas-Catani-Perez-Revelo/assets/117744029/effafdb9-e743-4152-8f01-ce870c3a4c51)
 
