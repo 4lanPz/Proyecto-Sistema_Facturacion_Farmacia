@@ -1,4 +1,8 @@
 # Proyecto_Casillas-Catani-Perez-Revelo.
+Casillas
+Catani
+Perez
+Revelo
 
 En los requerimientos que se pide para la farmacia FARMACET:
 
