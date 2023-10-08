@@ -23,9 +23,6 @@ El administrador deberà:
   
 ![image](https://github.com/Alan-Perez02/Proyecto_Casillas-Catani-Perez-Revelo/assets/117744029/b312821f-fad3-4ebc-a025-b5c3d24316ca)
 
- LINK DE TUTORIAL: https://youtu.be/S5G9AAt--lc
-
-
 Base de Datos
 
 DROP DATABASE PROYECTO2023A;
